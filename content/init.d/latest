@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# /etc/init.d/latest	Manche Services muessen neu gestartet werden.
+#
+### BEGIN INIT INFO
+# Provides:          service
+# Required-Start:    $network $local_fs $portmap $remote_fs $syslog
+# Required-Stop:     $network $local_fs $portmap $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Manche Services muessen neu gestartet werden.
+### END INIT INFO
+
+# Author: Foo Bar <foobar@baz.org>
+#
+# Please remove the "Author" lines above and replace them
+# with your own name if you copy and modify this script.
+
+case "$1" in
+  start)
+  	sleep 5
+	service rpcbind restart
+  	sleep 5
+	service nis restart
+        ;;
+  stop)
+        ;;
+  restart)
+  	sleep 5
+	service rpcbind restart
+  	sleep 5
+	service nis restart
+        ;;
+  *)
+        echo "Usage: /etc/init.d/latest {start|stop|reload|force-reload|restart}"
+        exit 1
+esac
+
+exit 0
